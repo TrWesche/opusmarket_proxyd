@@ -1,0 +1,7 @@
+# https://devcenter.heroku.com/articles/build-docker-images-heroku-yml#setting-build-time-environment-variables
+# Docker's config variables are not available at build time so they need to be injected 
+build:
+#   config:
+#     ARG_NAME: ARG_VALUE
+  docker:
+    web: Dockerfile

@@ -1,0 +1,38 @@
+api:
+  dashboard: true
+  insecure: true
+
+# entryPoints:
+#   http:
+#     address: ":80"
+#   https:
+#     address: ":443"
+
+providers:
+  docker:
+    defaultRule: "Host(`{{ trimPrefix `/` .Name }}.docker.localhost`)"
+    # defaultRule: "Host(`{{ .Name }}.docker.localhost`)"
+    # swarmMode: true
+    # defaultRule: "Host(`opustraefik.docker.localhost`)"
+    # endpoint: "unix:///var/run/docker.sock"
+    endpoint: "/var/run/docker.sock"
+    # endpoint: "ssh://traefik@192.168.2.5:2022"
+    exposedByDefault: false
+
+# certificatesResolvers:
+#   http:
+#     acme:
+#       email: email@example.com
+#       storage: acme.json
+#       httpChallenge:
+#         entryPoint: http
+
+
+# docker run -d -p 8080:8080 -p 80:80 \
+# -v $PWD/traefik.yml:/etc/traefik/traefik.yml \
+# -v /var/run/docker.sock:/var/run/docker.sock \
+# opusmarket-proxy:1.0
+
+# docker run -d -p 8080:8080 -p 80:80 -v /$(pwd):/traefik.yml:/etc/traefik/traefik.yml opusmarket-proxy:1.0
+
+# docker run -d -p 8080:8080 -p 80:80 -v /$(pwd):/traefik.yml:/etc/traefik/traefik.yml -v /var/run/docker.sock:/var/run/docker.sock opusmarket-proxy:1.0
